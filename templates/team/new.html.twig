@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+{% set page = 'team' %}
+
+{% block title %}Création d'une équipe{% endblock %}
+
+{% block body %}
+    <h1>Création d'une nouvelle équipe</h1>
+
+    <form action="{{ path('app_team_new') }}" method="post">
+        <div class="row">
+            <div class="col-6">
+                Nom
+            </div>
+            <div class="col-6">
+                {{ form_widget(form.name) }}
+                {{ form_errors(form.name) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                Date de création
+            </div>
+            <div class="col-6">
+                {{ form_widget(form.createdAt) }}
+                {{ form_errors(form.createdAt) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                Couleur du maillot
+            </div>
+            <div class="col-6">
+                {{ form_widget(form.shirt) }}
+                {{ form_errors(form.shirt) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                Origine
+            </div>
+            <div class="col-6">
+                {{ form_widget(form.origin) }}
+                {{ form_errors(form.origin) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                Nombre de joueurs
+            </div>
+            <div class="col-6">
+                {{ form_widget(form.players) }}
+                {{ form_errors(form.players) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                {{ form_widget(form._token) }}
+                <button type="submit" class="btn btn-primary float-right">Valider</button>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}

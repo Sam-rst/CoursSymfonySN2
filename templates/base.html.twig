@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+            <span class="fs-4">Symfony - Feuille de Match de Samuel</span>
+        </a>
+
+        <ul class="nav nav-pills">
+            <li class="nav-item"><a href="{{ path('app_home') }}" class="nav-link{% if page is defined and page == 'home'%} active{% endif %}" aria-current="page">Home</a></li>
+            <li class="nav-item"><a href="{{ path('app_team') }}" class="nav-link{% if page is defined and page == 'team'%} active{% endif %}" aria-current="page">Equipes</a></li>
+            <li class="nav-item"><a href="{{ path('app_meeting') }}" class="nav-link{% if page is defined and page == 'meeting'%} active{% endif %}" aria-current="page">Matchs</a></li>
+            <li class="nav-item"><a href="{{ path('app_about') }}" class="nav-link{% if page is defined and page == 'about'%} active{% endif %}">A propos</a></li>
+            <li class="nav-item"><a href="{{ path('app_sport') }}" class="nav-link{% if page is defined and page == 'sport'%} active{% endif %}">Sport</a></li>
+        </ul>
+    </header>
+</div>
+<div class="b-example-divider"></div>
+<div class="col-lg-8 mx-auto p-4 py-md-5">
+    <main>
+    {% block body %}{% endblock %}
+    </main>
+    <footer class="pt-5 my-5 text-muted border-top">
+        Made in Bordeaux · 2023
+    </footer>
+</div>
+
+<script src="/docs/5.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
+</html>

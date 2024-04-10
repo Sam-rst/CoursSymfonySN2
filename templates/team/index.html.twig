@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% set page = 'team' %}
+
+{% block title %}Page de démarrage{% endblock %}
+
+{% block body %}
+    <h1>Liste des équipes</h1>
+    <a href="{{path('app_team_new')}}" class="btn btn-primary">Nouvelle Equipe</a>
+    
+
+    <table>
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Origine</th>
+            <th>Maillot</th>
+            <th>Nombre de joueurs</th>
+            <th>Création</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for team in teams %}
+            <tr>
+                <td>{{ team.name }}</td>
+                <td>{{ team.origin }}</td>
+                <td>{{ team.shirt }}</td>
+                <td>{{ team.players }}</td>
+                <td>{{ team.createdAt|date('d/m/Y') }}</td>
+                <td>
+                <td>
+                    <a href="{{ path('app_team_update', {'id':team.id}) }}" class="btn btn-primary">Modifier</a>
+                </td>
+                <td>
+                    <form action="{{ path('app_team_delete', {'id': team.id}) }}" method="post">
+                        <input type="hidden" name="_token" value="{{ csrf_token('remove-team-'~team.id) }}">
+                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <p>Il y a {{ nbrEquipes }} équipes</p>
+{% endblock %}
